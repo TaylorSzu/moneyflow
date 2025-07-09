@@ -26,7 +26,6 @@ public class AccountService {
     public void update(Account account) {
         Account foundAccout = findById(account.getId());
         account.setNumberAccount(foundAccout.getNumberAccount());
-        account.setUser(foundAccout.getUser());
         accountRespository.save(account);
     }
 

@@ -22,8 +22,10 @@ public interface AccountMapper {
     @Mapping(source = "user.id", target = "userId")
     CreateAccountDTO toCreateAccountDTO(Account account);
 
-    @Mapping(target = "user", ignore = true)
-    Account toAccount(UpdateAccountDTO updateAccountDTO);
+    @Mapping(source = "updateAccountDTO.name", target = "name")
+    @Mapping(source = "user.id", target = "id")
+    @Mapping(source = "user", target = "user")
+    Account toAccount(UpdateAccountDTO updateAccountDTO, User user);
 
     @Mapping(source = "user.id", target = "userId")
     AccountDTO toAccountDTO(Account account);

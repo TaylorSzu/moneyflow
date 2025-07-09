@@ -41,7 +41,8 @@ public class AccountController {
 
     @PutMapping
     public ResponseEntity<Void> update(@RequestBody UpdateAccountDTO dto) {
-        accountService.update(accountMapper.toAccount(dto));
+        User user = userService.findById(dto.userId());
+        accountService.update(accountMapper.toAccount(dto, user));
         return ResponseEntity.noContent().build();
     }
 
